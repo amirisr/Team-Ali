@@ -18,6 +18,8 @@ def showVid(inp):
         ret, frame = cap.read()
         cv2.imshow("frame " + str(inp), frame)
         if cv2.waitKey(1) & 0xFF == ord('q'):
+            cv2.imwrite("outbmp.bmp", frame)
+            cv2.waitKey(0)
             break
 
     # When everything done, release the capture)
@@ -42,6 +44,25 @@ def showMultiple(num):
     cv2.destroyAllWindows()
 
 
+def imageDemo():
+    lst = np.array([[[0, 3 ** 14, 2**16]] * 640] * 480)
+    for i in range(lst.shape[0]):
+        for j in range(lst.shape[1]):
+            for k in range(lst.shape[2]):
+                lst[i][j][k] = round(2**17 * (i/480)**2 * (k+1)/3, 0)
+    print(lst.shape)
+    while True:
+        cv2.imshow("frame: ", lst)
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
+
 if __name__ == "__main__":
-    testLatency(0)
-    showMultiple(1)
+    im = cv2.imread("copy.bmp", -1)
+    print(im[200][320])
+    print(im[325][225])
+    print(np.amax(im))
+    print(im[80][480])
+    print(im[100][100])
+    print(im[30][600])
+    print(im[265][185])
+    # showVid(0)
