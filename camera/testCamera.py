@@ -57,12 +57,6 @@ def imageDemo():
             break
 
 if __name__ == "__main__":
-    im = cv2.imread("copy.bmp", -1)
-    print(im[200][320])
-    print(im[325][225])
-    print(np.amax(im))
-    print(im[80][480])
-    print(im[100][100])
-    print(im[30][600])
-    print(im[265][185])
+    im = cv2.imread("copy.bmp", cv2.COLOR_BGR2RGB)
+    print(im[145, 415])
     # showVid(0)
